@@ -19,24 +19,30 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 # Define Dutch locations (Cities and Offshore Wind Sites)
-# Using \u00A0 (non-breaking space) if needed, otherwise standard spaces are fine.
-# Assuming standard spaces from your input.
 DUTCH_LOCATIONS: List[Dict[str, Any]] = [
     {"name": "Flevoland Windplan Groen", "lat": 52.56, "lon": 5.76},
     {"name": "Windpark Noordoostpolder", "lat": 52.721, "lon": 5.583},
-    {"name": "Windplan Blauw", "lat": 52.56984, "lon": 5.650891},
     {"name": "Windpark Zeewolde Princess", "lat": 52.85647, "lon": 4.93378},
-    {"name": "Alexia Windpark", "lat": 52.8222, "lon": 4.932895},
     {"name": "Groningen Westereems", "lat": 53.4474, "lon": 6.842},
     {"name": "Delfzijl-Noord", "lat": 53.3215, "lon": 6.9701},
-    {"name": "Windpark Oostpolder Geefsweer", "lat": 53.321651, "lon": 6.969826},
     {"name": "Borssele I & II", "lat": 51.70278, "lon": 3.07611},
     {"name": "Gemini Wind Farm", "lat": 54.03611, "lon": 5.96306},
     {"name": "Hollandse Kust (Zuid) I & II", "lat": 52.36667, "lon": 4.11667},
     {"name": "Hollandse Kust (Zuid) III & IV Hollandse Kust Noord", "lat": 52.71511, "lon": 4.251},
     {"name": "Eneco Luchterduinen", "lat": 52.40481, "lon": 4.161821},
-    {"name": "IJsselmeer", "lat": 52.71505, "lon": 5.578903},
-    {"name": "Fryslan Wind Farm", "lat": 52.99435, "lon": 5.267503}
+    {"name": "Fryslan Wind Farm", "lat": 52.99435, "lon": 5.267503},
+    {"name": "Anna Mariapolder", "lat": 51.384694, "lon": 4.259278},
+    {"name": "Drentse Monden en Oostermoer", "lat": 52.9553216, "lon": 6.9352082},
+    {"name": "Egmond aan Zee", "lat": 52.6, "lon": 4.416667},
+    {"name": "Koegorspolder", "lat": 51.283333, "lon": 3.85},
+    {"name": "Kreekraksluis", "lat": 51.416667, "lon": 4.233333},
+    {"name": "Kroningswind", "lat": 51.79058, "lon": 4.069921},
+    {"name": "Maasvlakte 2", "lat": 51.93607, "lon": 3.999385},
+    {"name": "N33", "lat": 53.16511, "lon": 6.894004},
+    {"name": "Prinses Amalia", "lat": 52.583333, "lon": 4.2},
+    {"name": "Windplan Blauw", "lat": 52.566879, "lon": 5.586317},
+    {"name": "Wieringermeer cluster Nuon", "lat": 52.84179, "lon": 5.026437},
+    {"name": "Zeewolde", "lat": 52.34678, "lon": 5.499688}
 ]
 
 # Define desired hourly weather variables for Wind and Solar forecasting
@@ -62,15 +68,14 @@ HOURLY_VARIABLES: List[str] = [
 ]
 
 
-#  today's date at midnight UTC for consistent calculations
-today = pd.Timestamp('today', tz='UTC').normalize()
-# Go back 5 years for the start date
-start_date_str = (today - pd.Timedelta(days=365 * 5)).strftime('%Y-%m-%d')
-# End date is 5 days ago - ERA5/Best Match usually has a ~5 day delay
-end_date_str = (today - pd.Timedelta(days=5)).strftime('%Y-%m-%d')
+# Start date: April 1st, 2020
+start_date_str = '2020-04-01'
+
+# End date: April 1st, 2025
+end_date_str = '2025-04-01'
 
 # Output Directory
-OUTPUT_DIR = 'datasets'
+OUTPUT_DIR = 'datasets/wind_turbine_clusters_hourly_features_updated/'
 RATE_LIMIT_WAIT_SECONDS = 60 # Wait time in seconds when rate limit is hit
 MAX_RATE_LIMIT_RETRIES = 5   # Max attempts for a single location after hitting rate limits
 
