@@ -69,13 +69,13 @@ HOURLY_VARIABLES: List[str] = [
 
 
 # Start date: April 1st, 2020
-start_date_str = '2020-04-01'
+start_date_str = '2017-01-01'
 
 # End date: April 1st, 2025
-end_date_str = '2025-04-01'
+end_date_str = '2020-04-01'
 
 # Output Directory
-OUTPUT_DIR = 'datasets/wind_turbine_clusters_hourly_features_updated/'
+OUTPUT_DIR = 'datasets/new_data/'
 RATE_LIMIT_WAIT_SECONDS = 60 # Wait time in seconds when rate limit is hit
 MAX_RATE_LIMIT_RETRIES = 5   # Max attempts for a single location after hitting rate limits
 
