@@ -8,9 +8,9 @@ ONSHORE_CSV = BASE_DIR / 'final_averaged_onshore_weather.csv'
 OFFSHORE_CSV = BASE_DIR / 'final_averaged_offshore_weather.csv'
 
 # Model/Sequence Parameters
-SEQUENCE_LENGTH = 24
+SEQUENCE_LENGTH = 12
 EPOCHS = 50
-BATCH_SIZE = 64
+BATCH_SIZE = 128
 VALIDATION_SPLIT_FRAC = 0.2
 START_DATE = '2021-01-01' # Data filtering start date
 CAPACITY_PROXY_WINDOW = '365D' # Rolling window for capacity proxy
@@ -20,12 +20,12 @@ LAG_HOURS = 1 # Hours for lagged target feature
 SCALER_TYPE = 'RobustScaler' # 'RobustScaler' or 'StandardScaler'
 TCN_DROPOUT_RATE = 0.3
 USE_L2_REG = True           # Flag to add L2 regularization to output layer
-L2_FACTOR = 0.005           # L2 regularization factor
+L2_FACTOR = 0.001           # L2 regularization factor
 
 # TCN Architecture
 TCN_NUM_FILTERS = 16
 TCN_NUM_STACKS = 4
-TCN_KERNEL_SIZE = 12
+TCN_KERNEL_SIZE = 9
 TCN_DILATIONS = [1, 2, 4, 8, 16]
 PADDING = 'causal'
 USE_SKIP_CONNECTIONS = True
@@ -36,7 +36,7 @@ USE_BATCH_NORM = True
 USE_LAYER_NORM = False
 
 # Learning Rate Parameters
-LEARNING_RATE = 0.0005
+LEARNING_RATE = 0.001
 USE_LR_SCHEDULER = True     # Flag to use ReduceLROnPlateau
 
 # Feature Selection
