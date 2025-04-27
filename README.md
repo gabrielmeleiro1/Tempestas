@@ -162,7 +162,7 @@ To address this, a **Capacity Proxy** was calculated to estimate the operational
 
 The following graph shows the calculated capacity proxy (green line) plotted against the original offshore (blue) and onshore (red) wind power generation. The upward trend of the green line clearly illustrates the increasing installed capacity over the years.
 
-![Calculated Capacity Proxy vs Original Power](images/capacity_proxy_vs_power.png)
+![Calculated Capacity Proxy vs Original Power](images/calculated_energy_output.png)
 
 The actual wind power outputs (Offshore MW and Onshore MW) were then **normalized** by dividing them by this capacity proxy. This transforms the prediction target for the TCN model into a value representing the proportion of the estimated capacity being utilized (effectively a capacity factor, typically between 0 and 1).
 
@@ -173,7 +173,7 @@ This normalization step is crucial because it allows the TCN model to focus on l
 
 The TCN model was trained to predict the normalized wind power output. The training progress, showing the decrease in loss (Scaled Normalized MSE) and Mean Absolute Error (MAE) on both the training and validation sets over epochs, is displayed below. The close tracking of validation metrics with training metrics indicates good generalization without significant overfitting.
 
-![TCN Model Training Loss and MAE Curves](images/tcn_training_curves.png)
+![TCN Model Training Loss and MAE Curves](images/model_loss.png)
 
 After training, the model's predictions (normalized output) were denormalized back into Megawatts (MW) using the capacity proxy to evaluate its real-world performance against baseline models. The following table summarizes the performance on the test set:
 
@@ -205,38 +205,6 @@ The following graph illustrates the performance of the trained XGBoost model, co
 ![Electricity Price Prediction Performance](images/energy_price_prediction.png)
 
 The final output of this stage is the predicted hourly electricity price.
-
-
-## Repository Structure
-
-
-├── data_processing/       # Scripts for fetching, cleaning, preprocessing, merging data
-│   ├── load_data.py
-│   ├── preprocess_data_script.py
-│   ├── combine_data.py
-│   └── stack_energy_data.py
-├── datasets/              # Raw and processed data files
-│   ├── raw_weather_data/
-│   ├── raw_energy_production_data/
-│   ├── energy_price/
-│   ├── processed_weather_data/
-│   ├── processed_energy_data/
-│   └── final_datasets/
-├── wind_power_prediction/ # Stage 1: TCN model implementation, training, tuning
-│   ├── config.py
-│   ├── main_train.py
-│   ├── tcn_model.py
-│   └── azure_hyperparameter_tuning.py
-│   └── best_tcn_model_21feat_reg.keras 
-│   └── scaler_x_21feat_RobustScaler.joblib 
-│   └── scaler_y_21feat_RobustScaler.joblib 
-├── energy_price_prediction/ # Stage 2: XGBoost price prediction model
-│   ├── xgboost_price_prediction.ipynb
-│   ├── wind_generation_tcn_inference.ipynb
-│   ├── stage1_predictions_mw_model_trained_from_2020-01-01.csv 
-│   └── final_xgboost_price_model_tuned.json 
-├── requirements.txt       # Project dependencies
-└── README.md              # This file
 
 
 
