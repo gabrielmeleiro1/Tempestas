@@ -69,10 +69,10 @@ HOURLY_VARIABLES: List[str] = [
 
 
 # Start date: April 1st, 2020
-start_date_str = '2017-01-01'
+start_date_str = '2014-04-01'
 
 # End date: April 1st, 2025
-end_date_str = '2020-04-01'
+end_date_str = '2024-04-18'
 
 # Output Directory
 OUTPUT_DIR = 'datasets/new_data/'
