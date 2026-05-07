@@ -1,11 +1,15 @@
-from pathlib import Path
 import numpy as np
 
+try:
+    from .paths import FINAL_DATASETS_DIR, PROJECT_ROOT
+except ImportError:
+    from paths import FINAL_DATASETS_DIR, PROJECT_ROOT
+
 # Data Paths
-BASE_DIR = Path(".")
-ENERGY_CSV = BASE_DIR / 'combined_total_energy_data_2017_2025.csv'
-ONSHORE_CSV = BASE_DIR / 'final_averaged_onshore_weather.csv'
-OFFSHORE_CSV = BASE_DIR / 'final_averaged_offshore_weather.csv'
+BASE_DIR = PROJECT_ROOT
+ENERGY_CSV = FINAL_DATASETS_DIR / 'combined_total_energy_data_2017_2025.csv'
+ONSHORE_CSV = FINAL_DATASETS_DIR / 'final_averaged_onshore_weather.csv'
+OFFSHORE_CSV = FINAL_DATASETS_DIR / 'final_averaged_offshore_weather.csv'
 
 # Model/Sequence Parameters
 SEQUENCE_LENGTH = 12

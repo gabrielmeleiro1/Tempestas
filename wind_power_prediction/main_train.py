@@ -5,6 +5,7 @@ import os
 import tensorflow as tf
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 from sklearn.preprocessing import StandardScaler, RobustScaler
+from tcn import TCN
 
 # Import custom modules
 import config
