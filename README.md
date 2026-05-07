@@ -72,6 +72,17 @@ The price prediction model uses the wind power predictions from Stage 1 along wi
     pip install -r requirements.txt
     ```
 
+## Development
+
+Run the lightweight checks without retraining the models:
+
+```bash
+python -m pytest tests -q
+python -m py_compile wind_power_prediction/*.py energy_price_prediction/*.py data_processing/*.py tempestas_pipeline.py predict_energy_prices.py
+```
+
+Large datasets, trained models, scalers, prediction outputs, and experiment logs should be treated as artifacts. Keep small fixture files in `tests/fixtures/` when tests need sample data.
+
 ## Future Work
 
 - Incorporate solar production for a more holistic renewable energy prediction model

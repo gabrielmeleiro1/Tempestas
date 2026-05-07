@@ -44,3 +44,27 @@ datasets/**/*-checkpoint.ipynb
 *.swp
 *.swo
 
+# Local environments and tooling
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# Generated ML artifacts. Existing tracked artifacts are unaffected by this.
+*.keras
+*.h5
+*.joblib
+*.pkl
+*.npy
+*.npz
+*_predictions*.csv
+stage1_predictions_*.csv
+price_predictions_*.csv
+*_results.txt
+
+# Large regenerated data exports. Keep tiny test fixtures tracked under tests/fixtures.
+datasets/**/*.csv
+new_weather_data/*.csv
+!tests/fixtures/**/*.csv
